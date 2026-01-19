@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowCamera
   player: {fileID: 1909317569}
-  followSpeed: 2
+  followSpeed: 1
   offset: {x: 0, y: 5, z: -1.7}
 --- !u!1 &1025940255
 GameObject:
@@ -434,6 +434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   player: {fileID: 1909317571}
   coinText: {fileID: 1506568780}
+  HPSlider: {fileID: 0}
+  HPTextInside: {fileID: 0}
 --- !u!114 &1025940257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +857,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1098,6 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawn
   coins: 0
+  hp: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,13 +1,15 @@
 using UnityEngine;
 
-public class CoinCollect : MonoBehaviour
+public class HeartHeal : MonoBehaviour
 {
+    [SerializeField] public float HealAmount = 50;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && other is CapsuleCollider)
         {
             Player player = other.GetComponent<Player>();
-            player.AddCoin();
+            player.Add_hp(HealAmount);
             Destroy(gameObject);
         }
     }

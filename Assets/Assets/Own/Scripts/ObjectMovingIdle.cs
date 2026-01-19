@@ -3,8 +3,8 @@ using UnityEngine;
 public class RotateObject : MonoBehaviour
 {
     [SerializeField] public Vector3 rotationSpeed = new(0, 90, 0); // градусов/сек
-    [SerializeField] public float upDownSpeed = 2f;      // скорость колебаний
-    [SerializeField] public float upDownHeight = 0.03f;   // амплитуда
+    [SerializeField] public float upDownSpeed = 2f;         // скорость колебаний
+    [SerializeField] public float upDownHeight = 0.03f;     // амплитуда
     private Vector3 startPos;
 
     void Awake()

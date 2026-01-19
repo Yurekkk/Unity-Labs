@@ -1,45 +1,31 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class RLLaunch : MonoBehaviour
 {
-    [SerializeField] private InputActionAsset InputActions;
-    [SerializeField] private float coolDown = 2f;
+    //[SerializeField] private InputActionAsset InputActions;
+    [SerializeField] private float coolDown = 5f;
     [SerializeField] private Transform launchPoint;
     [SerializeField] private GameObject rocket;
-    private bool canShoot = true;
-    private InputAction launchAction;
-    private void OnEnable()
+
+    void Start()
     {
-        // Установка карты действий
-        InputActions.FindActionMap("RocketLauncher").Enable();
+        StartCoroutine(AutoFire());
     }
 
-    // Вызывается когда объект выключается на сцене
-    void OnDisable()
+    void Launch()
     {
-        InputActions.FindActionMap("RocketLauncher").Disable();
-    }
-
-    void Awake()
-    {
-        launchAction = InputSystem.actions.FindAction("Launch");
-    }
-
-    IEnumerator Launch()
-    {
-        canShoot = false;
         Debug.Log("Shot");
-        Instantiate(rocket, launchPoint);
-        yield return new WaitForSeconds(coolDown);
-        canShoot = true;
+        var obj = Instantiate(rocket, launchPoint.position, launchPoint.rotation);
+        obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
-    void Update()
+
+    IEnumerator AutoFire()
     {
-        if (launchAction.IsPressed() && canShoot)
+        while (true)
         {
-            StartCoroutine(Launch());
+            Launch();
+            yield return new WaitForSecondsRealtime(coolDown);
         }
     }
 }
