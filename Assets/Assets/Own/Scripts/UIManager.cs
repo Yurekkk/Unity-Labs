@@ -11,8 +11,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        HPSlider.value = 1f;
-        coinText.text = "$: " + 0;
+        if (coinText) coinText.text = "$: " + 0;
+        if (HPSlider) HPSlider.value = 1f;
     }
 
     void Update()
@@ -20,8 +20,8 @@ public class UIManager : MonoBehaviour
         float hp = player.hp;
         float maxHp = player.max_hp;
 
-        coinText.text = "$: " + player.coins;
-        HPSlider.value = hp / maxHp;
-        HPTextInside.text = $"{hp}/{maxHp}";
+        if (coinText) coinText.text = "$: " + player.coins;
+        if (HPSlider) HPSlider.value = hp / maxHp;
+        if (HPTextInside) HPTextInside.text = $"{hp}/{maxHp}";
     }
 }

@@ -25,7 +25,7 @@ public class RLLaunch : MonoBehaviour
         while (true)
         {
             Launch();
-            yield return new WaitForSecondsRealtime(coolDown);
+            yield return new WaitForSeconds(coolDown);
         }
     }
 }
