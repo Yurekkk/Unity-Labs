@@ -16,19 +16,14 @@ public class FlyingRocket : MonoBehaviour
         StartCoroutine(DetonateAfterDelay());
     }
 
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        // Проверяем, есть ли игрок рядом
-        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, playerLayer);
-        foreach (var hit in hits)
+        if (other.CompareTag("Player") && other is CapsuleCollider)
         {
-            if (hit.CompareTag("Player"))
-            {
-                Player player = hit.GetComponent<Player>();
-                player.Add_hp(-damage);
-                Detonate();
-                return;
-            }
+            Player player = other.GetComponent<Player>();
+            player.Damage(damage);
+            Detonate();
+            return;
         }
     }
 
@@ -43,7 +38,7 @@ public class FlyingRocket : MonoBehaviour
     {
         while (true)
         {
-            transform.position += transform.forward * speed * Time.fixedDeltaTime;
+            transform.position += speed * Time.fixedDeltaTime * transform.forward;
             yield return new WaitForFixedUpdate();
         }
     }

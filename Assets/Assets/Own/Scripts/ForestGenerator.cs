@@ -16,8 +16,8 @@ public class ForestGenerator : MonoBehaviour
         TRS_Matrices = new Matrix4x4[instanceCount];
         for (int i = 0; i < instanceCount; i++)
         {
-            float x = Random.Range(400, 600);
-            float z = Random.Range(400, 600);
+            float x = Random.Range(250, 450);
+            float z = Random.Range(150, 350);
 
             float steepness = terrain.terrainData.GetSteepness(x, z);
             if (steepness > maxSteepness)

@@ -19,7 +19,7 @@ public class PoisonEffect : MonoBehaviour
     {
         if (other.CompareTag("Player") && other is CapsuleCollider)
         {
-            player.GetComponent<Player>().Add_hp(-damage);
+            player.GetComponent<Player>().Damage(damage);
             if (activePoison != null)
                 StopCoroutine(activePoison);
             activePoison = StartCoroutine(PoisonRoutine());
@@ -34,7 +34,7 @@ public class PoisonEffect : MonoBehaviour
         while (elapsed < poisonDuration)
         {
             yield return new WaitForSeconds(1f);
-            player.GetComponent<Player>().Add_hp(-poisonDamagePerSecond);
+            player.GetComponent<Player>().Damage(poisonDamagePerSecond);
             elapsed += 1f;
         }
 

@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
         coins++;
     }
 
+    public void Damage(float damage)
+    {
+        Add_hp(-damage);
+    }
+
     public void Add_hp(float delta_hp)
     {
         if (-delta_hp >= hp)
@@ -34,11 +39,10 @@ public class Player : MonoBehaviour
     {
         dead = true;
         Time.timeScale = 0f; // Останавливаем игру
-        StartCoroutine(deathScreenFadeIn());
+        StartCoroutine(DeathScreenFadeIn());
     }
 
-
-    IEnumerator deathScreenFadeIn()
+    IEnumerator DeathScreenFadeIn()
     {
         // Плавное появление для экрана смерти
         float elapsed = 0f;
